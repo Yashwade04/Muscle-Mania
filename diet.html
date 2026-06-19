@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <link rel="shortcut icon" href="Images/TitleLogo.png"/>
+    <link
+        href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet"/>
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../src/Script.css">
+    <title>Diet Plan</title>
+  <!-- Navbar starts -->  
+    <header class="head">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="index.html">
+            <img src="Images/Musclemanialogo.png" class="logo" /></a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="#">Services &#9660;</a>
+            <ul class="dropdown-menu">
+              <li><a href="directory.html">Exercise Library</a></li>
+              <li><a href="calories.html">Calories Calculator</a></li>
+              <li><a href="diet.html">Diet plans</a></li>
+            </ul>
+          </li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- Navbar end -->  
+  </head>
+  <body>
+    <script type="text/javascript" src="../src/bmr.js"></script>
+    <script type="text/javascript" src="../src/resources.js"></script>
+    <div id ="container" align="center">
+        <form>
+          <div class="wrapper-calories">
+              <div id="column-one">
+                  <p class="input-calories"> Enter total daily calorie intake
+                  <input id = "targetCalories" name="CalorieIntake" type="text" size="7" value="1500" 
+                  class="calorie-field-style">
+                  </p>
+                  <h3 id="calculator-h3">Enter desired macronutrient percentages %</h3>
+                  <p>
+                      Carbohydrate
+                      <input type="text" id ="carb-per" name="carb-per" value="30"  size="4">
+                  </p>
+                  <p>
+                      Protein
+                      <input type="text" id="protien-per" name="protien-per" value="35" size="4">
+                  </p>
+                  <p>
+                      Fat
+                      <input type="text" id="fat-per" name="fat-per" value="35" size="4">                    
+                  </p>
+                      <div class="inner">
+                      <input type="button" value="Calculate" class="Button" onclick="calc(this.form)">
+                      <input type="reset" value="Reset" name="Reset" class="Button">
+                      </div>
+                      <p> Note: Please make sure that all the percentages add upto 100</p>
+              </div>
+              <div id="column-two" class = "grid-container">
+              <div class="grid-child-calories">
+                <h3 id="calculator-h3">Calories from each macro</h3>
+                <p>
+                    Carbs
+                    <input name="CarbCalories" type="text" size="7" class="calorie-results-field" placeholder="Carb calories"> 
+                </p>
+                <p>
+                    Protein
+                    <input name="ProteinCalories" type="text" size="7" class="calorie-results-field" placeholder="Protein calories"> 
+                </p>
+                <p>
+                    Fat
+                    <input name="FatCalories" type="text" size="7" class="calorie-results-field" placeholder="Fat calories"> 
+                </p>
+              </div>
+              <div class="grid-child-grams">
+                <h3 id="calculator-h3">Grams of each macro</h3>
+                <p>
+                    Carbs (g)
+                    <input name="CarbGrams" type="text" size="7" class="grams-results-field" placeholder="Carb grams"> </p>
+                <p>
+                    Protein (g)
+                    <input name="ProteinGrams" type="text" size="7" class="grams-results-field" placeholder="Protein grams"></p>
+                <p>
+                    Fat (g)
+                    <input name="FatGrams" type="text" size="7" class="grams-results-field" placeholder="Fat grams"></p>
+              </div>
+              </div>
+          </div>
+    </form>
+    </div>
+    <div class = "resources">
+      <div class="resources-dropdown">
+        <select name="slec" id="select-source" class="resource-select">
+          <option value="Dairy" selected>Dairy</option>
+          <option value="Veg">Veg</option>
+          <option value="Non-Veg">Non-Veg</option>
+          <option value="Seeds">Seeds</option>
+          <option value="Nuts">Nuts</option>
+          <option value="Millets">Millets</option>
+        </select>
+        <input type="button" id = "btnAdd" class="Button addBtn"onclick = "AddDropDownList()" value = "Add Diet Sources" />
+        <input type="button" class="Button Remove" onclick="btnRemove()" value = "Remove">
+      </div>
+      <div id = "dvContainer" class="addCont"></div>
+      <div class="total">
+        <p id="total-resources"></p>
+      </div>
+    </div>
+    <footer class="pt-4" id="footer">
+      <div class="footer container">
+        <div class="row text-center align-items-center">
+          <div class="col-md-4 text-md-start py-2 text-white">
+            <a
+              class="text-white text-decoration-none"
+              class="CopyRight text-md-start"
+              href="#"
+              >© Copyright 2024 MuscleMania</a
+            >
+            <br />
+            <span class="text-white"> Some Rights Reserved.</span>
+            <br />
+            <a class="text-white text-decoration-none" href="#">Disclaimer</a>
+            |
+            <a class="text-white text-decoration-none" href="#">CopyRight</a>
+            |
+            <a class="text-white text-decoration-none" href="#">Newsletter</a>
+            <br />
+            <br />
+            <br />
+          </div>
+
+          <div class="col-md-4 pb-4">
+            <a href="#"
+              ><img class="centericon" src="Images\playstorelogowhite.png"
+            /></a>
+            <a href="#"
+              ><img class="centericon" src="Images\Apple Logo.png"
+            /></a>
+          </div>
+
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-3">
+                <a href="#"><img class="icon" src="Images\Instagram.png" /></a>
+              </div>
+              <div class="col-3">
+                <a href="#"><img class="icon" src="Images\Twitter.png" /></a>
+              </div>
+              <div class="col-3">
+                <a href="#"><img class="icon" src="Images\Facebook.png" /></a>
+              </div>
+              <div class="col-3">
+                <a href="#"><img class="icon" src="Images\Reddit.png" /></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container footer text-md-start text-center">
+        <h4 class="text-white">Simplify Your Workout</h4>
+      </div>
+    </footer>  
+  </body>
+</html>
